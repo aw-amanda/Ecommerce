@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+:root {
+    --font-elsie: 'Elsie_Swash_Caps', serif;
+    --font-roboto: 'Roboto_Condensed', sans-serif;
+}
+
+.font-heading {
+    font-family: var(--font-elsie);
+}
+
+.font-paragraph {
+    font-family: var(--font-roboto);
+}
