@@ -5,13 +5,8 @@ Next.js + TailwindCSS + Zustand + Stripe
 
 
 
-![alt text](../../../Portfolio/digital_portfolio/src/assets/NextJS_eCommerce.png)
 
-
-
-
-
-
+<img width="1659" height="933" alt="ecommerce" src="https://github.com/user-attachments/assets/69f33277-7b93-4263-b309-78eb0d3ec510" />
 
 
 
