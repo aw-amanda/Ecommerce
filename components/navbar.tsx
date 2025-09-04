@@ -6,7 +6,6 @@ import { NavItems } from "@/lib/nav-items"
 import Logo from "@/public/pâtisserie_magique_logo.png"
 import Link from "next/link"
 import Image from 'next/image'
-import { TfiShoppingCart, TfiMenu, TfiClose } from "react-icons/tfi"
 import { PiShoppingCartSimpleDuotone, PiListBold, PiXFill } from "react-icons/pi";
 import { useEffect, useRef, useState } from "react"
 
