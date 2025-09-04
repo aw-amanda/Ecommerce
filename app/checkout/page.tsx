@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useCartStore } from "@/store/cart-store"
 import { checkoutAction } from "./_components/checkout-action"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 
 export default function CheckoutPage() {
@@ -16,12 +16,32 @@ export default function CheckoutPage() {
         0
     )
     const mainRef = useRef<HTMLDivElement>(null)
+    const [isProcessing, setIsProcessing] = useState(false)
 
     useEffect(() => {
         if ((total === 0 || items.length === 0) && mainRef.current) {
             mainRef.current.focus()
         }
     }, [total, items])
+
+    // client-side form handler
+    const handleCheckout = async (event: React.FormEvent) => {
+        event.preventDefault()
+        setIsProcessing(true)
+        
+        try {
+            // mock FormData object for the checkout action
+            const formData = new FormData()
+            formData.append("items", JSON.stringify(items))
+            
+            await checkoutAction(formData)
+        } catch (error) {
+            console.error("Checkout failed:", error)
+            alert("Checkout simulation completed. In a live environment, this would process your payment.")
+        } finally {
+            setIsProcessing(false)
+        }
+    }
 
     if (total === 0 || items.length === 0) {
         return (
@@ -167,7 +187,7 @@ export default function CheckoutPage() {
                         </div>
                     </CardContent>
                 </Card>
-                <form 
+                {/* <form 
                     action={checkoutAction} 
                     className="w-full flex flex-col items-center justify-center mt-8"
                     aria-label="Payment form"
@@ -186,6 +206,29 @@ export default function CheckoutPage() {
                                 bg-cyan-400/70 backdrop-blur-md text-black"
                     > 
                         « Proceed to Payment »
+                    </Button>
+                </form> */}
+
+                 <form 
+                    onSubmit={handleCheckout}
+                    className="w-full flex flex-col items-center justify-center mt-8"
+                    aria-label="Payment form"
+                >
+                    <input 
+                        type="hidden" 
+                        name="items" 
+                        value={JSON.stringify(items)} 
+                        aria-hidden="true"
+                    />
+                    <Button 
+                        type="submit" 
+                        variant="default" 
+                        aria-label="Proceed to payment"
+                        disabled={isProcessing}
+                        className="w-1/2 p-8 text-xl md:text-3xl font-bold font-paragraph
+                                bg-cyan-400/70 backdrop-blur-md text-black"
+                    > 
+                        {isProcessing ? "Processing..." : "« Proceed to Payment »"}
                     </Button>
                 </form>
             </div>
