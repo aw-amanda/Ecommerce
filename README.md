@@ -1,4 +1,4 @@
-Next.js E-Commerce Web Application
+Next.js E-Commerce Web Application: https://aw-amanda.github.io/Ecommerce/
 
 Next.js + TailwindCSS + Zustand + Stripe
 
