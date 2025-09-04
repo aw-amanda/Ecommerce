@@ -10,21 +10,21 @@ const mockProducts = [
     id: "1",
     name: "Artisan Macaroons",
     description: "Delicate French macaroons in assorted flavors",
-    image: "/macaroons.jpg",
+    image: "/Ecommerce/macaroons.jpg",
     price: 29.99,
   },
   {
     id: "2", 
     name: "Custom Wedding Cakes",
     description: "Elegant bespoke wedding cakes",
-    image: "/cake.jpg",
+    image: "/Ecommerce/cake.jpg",
     price: 89.99,
   },
   {
     id: "3",
     name: "Seasonal Pastries",
     description: "Fresh pastries made with organic fruits",
-    image: "/pastries.jpg",
+    image: "/Ecommerce/pastries.jpg",
     price: 19.99,
   }
 ]
