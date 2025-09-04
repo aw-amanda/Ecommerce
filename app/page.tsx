@@ -1,14 +1,41 @@
-import { stripe } from "@/lib/stripe"
+// import { stripe } from "@/lib/stripe"
 import Link from "next/link"
 import Image from "next/image"
 import heroBG from "@/public/heroBG.png"
-import { Carousel } from "@/components/ui/carousel"
+// import { Carousel } from "@/components/ui/carousel"
+import { MockCarousel } from "@/components/ui/mock-carousel"
 
-export default async function Home() {
-  const products = await stripe.products.list({
-    expand: ["data.default_price"],
-    limit: 5,
-  })
+const mockProducts = [
+  {
+    id: "1",
+    name: "Artisan Macaroons",
+    description: "Delicate French macaroons in assorted flavors",
+    image: "/macaroons.jpg",
+    price: 29.99,
+  },
+  {
+    id: "2", 
+    name: "Custom Wedding Cakes",
+    description: "Elegant bespoke wedding cakes",
+    image: "/cake.jpg",
+    price: 89.99,
+  },
+  {
+    id: "3",
+    name: "Seasonal Pastries",
+    description: "Fresh pastries made with organic fruits",
+    image: "/pastries.jpg",
+    price: 19.99,
+  }
+]
+
+// export default async function Home() {
+  // const products = await stripe.products.list({
+  //   expand: ["data.default_price"],
+  //   limit: 5,
+  // })
+
+  export default function Home() {
 
   return (
     <section 
@@ -32,6 +59,7 @@ export default async function Home() {
       <div 
         className="relative flex flex-col items-center px-5 py-10"
         role="heading"
+        aria-level={1}
       >
         <div className="text-center bg-black/75 backdrop-blur-md rounded-2xl mx-8 md:mx-32">
             <h1 
@@ -47,8 +75,9 @@ export default async function Home() {
                   className="w-full cursor-pointer"
                   aria-label="View our featured pastry products"
                 >
-                  <Carousel 
-                    products={products.data}
+                  <MockCarousel 
+                    // products={products.data}
+                    products={mockProducts}
                     aria-roledescription="carousel"
                     aria-label="Featured products carousel"
                   />

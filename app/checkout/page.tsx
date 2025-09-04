@@ -123,7 +123,7 @@ export default function CheckoutPage() {
                                             <Button 
                                                 onClick={() => removeItem(item.id)}
                                                 variant="outline"
-                                                aria-lebel={`Decrease quantity of ${item.name}`}
+                                                aria-label={`Decrease quantity of ${item.name}`}
                                             > 
                                                 - 
                                             </Button>
